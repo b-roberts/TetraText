@@ -19,7 +19,6 @@ use DateTime;
 use DateTimeZone;
 use Lang;
 
-use \HTMLPurifier;
 
 class TetraText {
 
@@ -1659,26 +1658,6 @@ class TetraText {
 			$trans = strtolower($trans);
 
 		return $trans;
-	}
-
-	/**
-	 * Use HTMLPurifier to sanitize HTML data.
-	 *
-	 * @param  string  $html
-	 */
-	public function purifyHtml($html)
-	{
-		$purifier = new HTMLPurifier();
-
-		$html = trim($html);
-		$html = $purifier->purify($html);
-
-		if (substr($html, -4) == "<br>")
-			$html = substr($html, 0, (strlen($html) - 4));
-
-		$html = str_replace('<br>', '<br />', $html);
-
-		return $html;
 	}
 
 }
